@@ -6,7 +6,7 @@ metadata:
 spec:
   project: rmk-ragbot
   source:
-    repoURL: https://github.com/AkkshayK-98/raspberry-pi5-gitops
+    repoURL: https://github.com/AkkshayK-98/raspberry-pi5-gitops.git
     targetRevision: HEAD
     path: argo/apps/rmk-ragbot
   destination:
