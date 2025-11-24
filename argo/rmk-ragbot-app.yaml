@@ -7,7 +7,7 @@ spec:
   project: rmk-ragbot
   source:
     repoURL: https://github.com/AkkshayK-98/raspberry-pi5-gitops
-    targetRevision: HEAD
+    targetRevision: main
     path: apps/rmk-ragbot
   destination:
     server: https://kubernetes.default.svc
