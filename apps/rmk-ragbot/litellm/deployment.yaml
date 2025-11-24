@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: litellm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: litellm
+  template:
+    metadata:
+      labels:
+        app: litellm
+    spec:
+      containers:
+      - name: litellm
+        image: ghcr.io/berriai/litellm:main-v1.80.0.dev6
+        args:
+          - "--config=/app/config/litellm_config.yaml"
+          - "--port=4000"
+        env:
+        - name: GROQ_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: groq-api-secret
+              key: key
+        volumeMounts:
+          - name: config
+            mountPath: /app/config
+      volumes:
+        - name: config
+          configMap:
+            name: litellm-config
